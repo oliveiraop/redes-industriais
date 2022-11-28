@@ -24,7 +24,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::updateWidgets(QModbusDataUnit::RegisterType table, int address, int size)
 {
-
+    quint16 value;
+    modbusDevice->data(QModbusDataUnit::Coils, 0, &value);
 }
 
 void MainWindow::on_abrir_clicked()
