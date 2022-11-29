@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QModbusTcpServer>
+#include <QModbusRtuSerialMaster>
 
 namespace Ui {
 class MainWindow;
@@ -16,13 +17,19 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private Q_SLOTS:
+    void updateWidgets(QModbusDataUnit::RegisterType table, int address, int size);
+
 private slots:
     void on_abrir_clicked();
 
-    void updateWidgets(QModbusDataUnit::RegisterType table, int address, int size);
+
+    void on_conectar_clicked();
+
 private:
     Ui::MainWindow *ui;
     QModbusTcpServer * modbusTcpServer;
+    QModbusRtuSerialMaster * modbusRtuMaster;
 };
 
 #endif // MAINWINDOW_H
